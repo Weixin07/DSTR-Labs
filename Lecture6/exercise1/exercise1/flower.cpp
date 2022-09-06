@@ -45,7 +45,7 @@ void InsertIntoSortedList(int FlowerID, string FlowerName)
 		head = newnode;
 	}
 
-	else if (newnode->FlowerID >= head->FlowerID) {
+	else if (newnode->FlowerName >= head->FlowerName) {
 		newnode->nextAdd = head;
 		head = newnode;
 	}
@@ -54,7 +54,7 @@ void InsertIntoSortedList(int FlowerID, string FlowerName)
 		Flower* prev = head; 
 
 		while (current != NULL) {
-			if (newnode->FlowerID >= current->FlowerID) {
+			if (newnode->FlowerName >= current->FlowerName) {
 				break;
 			}
 			prev = current;
