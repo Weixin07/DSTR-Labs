@@ -1,0 +1,4 @@
+﻿  Functions.cpp
+D:\APU Stuff\Bachelor of Computer Science (Intelligent Systems) [APD2F2202CS(IS)]\Semester 2\Data Structures [CT077-3-2-DSTR]\Mine\Labs\Lab2\Functions\Functions\Functions.cpp(31,21): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\APU Stuff\Bachelor of Computer Science (Intelligent Systems) [APD2F2202CS(IS)]\Semester 2\Data Structures [CT077-3-2-DSTR]\Mine\Labs\Lab2\Functions\Functions\Functions.cpp(45,21): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Functions.vcxproj -> D:\APU Stuff\Bachelor of Computer Science (Intelligent Systems) [APD2F2202CS(IS)]\Semester 2\Data Structures [CT077-3-2-DSTR]\Mine\Labs\Lab2\Functions\x64\Debug\Functions.exe

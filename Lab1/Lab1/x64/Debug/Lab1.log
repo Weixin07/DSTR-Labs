@@ -1,0 +1,5 @@
+﻿  Exercise 2.cpp
+  Exercise1.cpp
+  Generating Code...
+Exercise1.obj : error LNK2005: main already defined in Exercise 2.obj
+D:\APU Stuff\Bachelor of Computer Science (Intelligent Systems) [APD2F2202CS(IS)]\Semester 2\Data Structures [CT077-3-2-DSTR]\Mine\Labs\Lab1\x64\Debug\Lab1.exe : fatal error LNK1169: one or more multiply defined symbols found
