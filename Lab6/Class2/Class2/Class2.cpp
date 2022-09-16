@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-//gloabal variable of size
+//global variable of size
 int sizeOfLinkedList = 0;
 
 //build a car structure
