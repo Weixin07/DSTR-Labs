@@ -1,5 +1,2 @@
 ﻿  Extra Exercises.cpp
-D:\APU Stuff\Bachelor of Computer Science (Intelligent Systems) [APD2F2202CS(IS)]\Semester 2\Data Structures [CT077-3-2-DSTR]\Mine\Labs\Lab6\ExtraExercise\ExtraExercise\Extra Exercises.cpp(204,6): warning C4101: 'yearReleased': unreferenced local variable
-D:\APU Stuff\Bachelor of Computer Science (Intelligent Systems) [APD2F2202CS(IS)]\Semester 2\Data Structures [CT077-3-2-DSTR]\Mine\Labs\Lab6\ExtraExercise\ExtraExercise\Extra Exercises.cpp(206,9): warning C4101: 'songLength': unreferenced local variable
-D:\APU Stuff\Bachelor of Computer Science (Intelligent Systems) [APD2F2202CS(IS)]\Semester 2\Data Structures [CT077-3-2-DSTR]\Mine\Labs\Lab6\ExtraExercise\ExtraExercise\Extra Exercises.cpp(138): error C4700: uninitialized local variable 'songLength' used
-D:\APU Stuff\Bachelor of Computer Science (Intelligent Systems) [APD2F2202CS(IS)]\Semester 2\Data Structures [CT077-3-2-DSTR]\Mine\Labs\Lab6\ExtraExercise\ExtraExercise\Extra Exercises.cpp(138): error C4700: uninitialized local variable 'yearReleased' used
+  ExtraExercise.vcxproj -> D:\APU Stuff\Bachelor of Computer Science (Intelligent Systems) [APD2F2202CS(IS)]\Semester 2\Data Structures [CT077-3-2-DSTR]\Mine\Labs\Lab6\ExtraExercise\x64\Debug\ExtraExercise.exe

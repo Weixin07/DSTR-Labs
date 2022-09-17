@@ -1,9 +1,7 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
 int sizeOfLinkedList = 0;
-int sizeOfSortedLinkedList = 0;
 
 struct songs
 {
@@ -17,17 +15,17 @@ struct songs
 	songs* nextAddress;
 }*head, * tail;
 
-struct sortedSongs
+struct songs1
 {
-	int noOfSorted;
-	string artistOfSorted;
-	string songNameOfSorted;
-	int yearReleasedOfSorted;
-	string genreOfSorted;
-	double songLengthOfSorted;
+	int no1;
+	string artist1;
+	string songName1;
+	int yearReleased1;
+	string genre1;
+	double songLength1;
 
-	sortedSongs* nextAddressOfSorted;
-}*headOfSorted, * tailOfSorted;
+	songs1* nextAddress1;
+}*head1, * tail1;
 
 songs* createNewNode(int no, string artist, string songName, int yearReleased, string genre, double songLength) {
 	songs* newNode = new songs;
@@ -42,21 +40,17 @@ songs* createNewNode(int no, string artist, string songName, int yearReleased, s
 	return newNode;
 }
 
-sortedSongs* createSortedNewNode() {
-	songs* current = head;
-	sortedSongs* newNodeOfSorted = new sortedSongs;
+songs1* createNewNode1(int no1, string artist1, string songName1, int yearReleased1, string genre1, double songLength1) {
+	songs1* newNode = new songs1;
+	newNode->no1 = no1;
+	newNode->artist1 = artist1;
+	newNode->songName1 = songName1;
+	newNode->yearReleased1 = yearReleased1;
+	newNode->genre1 = genre1;
+	newNode->songLength1 = songLength1;
+	newNode->nextAddress1 = NULL;
 
-	while (current != NULL) {
-		newNodeOfSorted->noOfSorted = current->no;
-		newNodeOfSorted->artistOfSorted = current->artist;
-		newNodeOfSorted->songNameOfSorted = current->songName;
-		newNodeOfSorted->yearReleasedOfSorted = current->yearReleased;
-		newNodeOfSorted->genreOfSorted = current->genre;
-		newNodeOfSorted->songLengthOfSorted = current->songLength;
-		newNodeOfSorted->nextAddressOfSorted = NULL;
-	}
-
-	return newNodeOfSorted;
+	return newNode;
 }
 
 void viewList() {
@@ -71,24 +65,13 @@ void viewList() {
 	cout << "End of List!" << endl << endl;
 }
 
-void gettingDataFromSongs() {
-	songs* current = head;
-
-	while (current != NULL) {
-		cout << current->no << " - " << current->artist << " - " << current->songName << " - " << current->yearReleased << " - " << current->genre << " - " << current->songLength << endl;
-		current = current->nextAddress;
-	}
-
-	cout << "End of List!" << endl << endl;
-}
-
 void viewSortedList() {
-	sortedSongs* current = headOfSorted;
+	songs1* current = head1;
 
 	while (current != NULL) {
 		cout << "No - Artist - Song - Released - Genre - Length" << endl;
-		cout << current->no << " - " << current->artist << " - " << current->songName << " - " << current->yearReleased << " - " << current->genre << " - " << current->songLength << endl;
-		current = current->nextAddress;
+		cout << current->no1 << " - " << current->artist1 << " - " << current->songName1 << " - " << current->yearReleased1 << " - " << current->genre1 << " - " << current->songLength1 << endl;
+		current = current->nextAddress1;
 	}
 
 	cout << "End of List!" << endl << endl;
@@ -125,85 +108,63 @@ void insertIntoSpecificLocation(int no, string artist, string songName, int year
 	::sizeOfLinkedList++;
 }
 
-void insertIntoSortedList()
-{
-	head = tail = NULL;
-	int noOfSorted = 0;
-	string artistOfSorted;
-	string songNameOfSorted;
-	int yearReleasedOfSorted = 0;
-	string genreOfSorted;
-	double songLengthOfSorted = 0.0;
+void insertIntoSortedList(int no1, string artist1, string songName1, int yearReleased1, string genre1, double songLength1) {
+	songs1* newNode = createNewNode1(no1, artist1, songName1, yearReleased1, genre1, songLength1);
 
-	sortedSongs* newNodeOfSorted = createSortedNewNode();
-
-	if (headOfSorted == NULL)
-	{
-		headOfSorted = newNodeOfSorted;
+	if (head1 == NULL) {
+		head1 = newNode;
 	}
-	else if (newNodeOfSorted->yearReleasedOfSorted <= headOfSorted->yearReleasedOfSorted)
-	{
-		newNodeOfSorted->nextAddressOfSorted = headOfSorted;
-		headOfSorted = newNodeOfSorted;
+	else if (newNode->yearReleased1 <= head1->yearReleased1) {
+		newNode->nextAddress1 = head1;
+		head1 = newNode;
 	}
-	else
-	{
-		sortedSongs* currentOfSorted = headOfSorted->nextAddressOfSorted;
-		sortedSongs* prevOfSorted = headOfSorted;
+	else {
+		songs1* current = head1->nextAddress1;
+		songs1* previous = head1;
 
-		while (currentOfSorted != NULL)
-		{
-			if (newNodeOfSorted->yearReleasedOfSorted <= currentOfSorted->yearReleasedOfSorted)
-			{
-				break; 
+		while (current != NULL) {
+			if (newNode->yearReleased1 <= current->yearReleased1) {
+				break;
 			}
-			prevOfSorted = currentOfSorted;
-			currentOfSorted = currentOfSorted->nextAddressOfSorted;
+			previous = current;
+			current = current->nextAddress1;
 		}
-		prevOfSorted->nextAddressOfSorted = newNodeOfSorted;
-		newNodeOfSorted->nextAddressOfSorted = currentOfSorted;
+		previous->nextAddress1 = newNode;
+		newNode->nextAddress1 = current;
 	}
-
-	::sizeOfSortedLinkedList++;
-
-	sortedSongs* currentOfSorted = headOfSorted;
-
-	while (currentOfSorted != NULL) {
-		cout << "No - Artist - Song - Released - Genre - Length" << endl;
-		cout << currentOfSorted->noOfSorted << " - " << currentOfSorted->artistOfSorted << " - " << currentOfSorted->songNameOfSorted << " - " << currentOfSorted->yearReleasedOfSorted << " - " << currentOfSorted->genreOfSorted << " - " << currentOfSorted->songLengthOfSorted << endl;
-		currentOfSorted = currentOfSorted->nextAddressOfSorted;
-	}
-
-	cout << "End of List!" << endl << endl;
 }
 
-void deleteFromFrontOfList() {
+void deleteFromEnd()
+{
+	songs* current = head;
+
 	if (head == NULL) {
-		cout << "Underflow happened here! Do not delete anything from this this!" << endl;
+		cout << "The list is still empty!" << endl;
 		return;
 	}
-	songs* current = head;
-	head = head->nextAddress;
 
-	if (head == NULL) {
-		tail = NULL;
+	current = head;
+	songs* previous = NULL;
+
+	while (current->nextAddress != NULL)
+	{
+		previous = current;
+		current = current->nextAddress;
 	}
 
-	cout << "Deleted Song No: " << current->no << endl;
+	if (previous != NULL) {
+		previous->nextAddress = NULL;
+		tail = previous;;
+	}
+	else {
+		head = tail = NULL;
+	}
+	cout << "The deleted value is " << current->no << endl;
 	delete current;
-
-	::sizeOfLinkedList--;
 }
 
 int main() {
 	head = tail = NULL;
-	int position = 1;
-	int no = 3;
-	string artist;
-	string songName;
-	int yearReleased;
-	string genre;
-	double songLength;
 
 	insertIntoSpecificLocation(3, "The Cranberries", "Promises", 1999, "Rock", 4.30);
 	insertIntoSpecificLocation(2, "Taylor Swift", "You Belong with Me", 2008, "Pop", 3.48);
@@ -214,45 +175,25 @@ int main() {
 	insertIntoSpecificLocation(7, "Selena Gomez, BlackPink", "Ice Cream", 2020, "Pop", 2.56, 5);
 	insertIntoSpecificLocation(8, "Britney Spears", "Toxic", 2003, "Dance", 3.19, 7);
 
-	/*
-	int decision = 1;
-	while (decision != 0)
-	{
-		no++;
-		cout << "Enter the artist name: ";
-		getline(cin, artist);
-		cout << "Enter the song name: ";
-		getline(cin, songName);
-		cout << "Enter the Year Released: ";
-		cin >> yearReleased;
-		cout << "Enter the genre: ";
-		cin >> genre;
-		cout << "Enter the song length: ";
-		cin >> songLength;
-		cout << "Which location would you like to place the Song No of " << no << "? Range between 1 - " << ::sizeOfLinkedList + 1 << " : ";
-		cin >> position;
-		insertIntoSpecificLocation(no, artist, songName, yearReleased, genre, songLength, position);
-		cout << endl;
-		cout << "Would you like to add a song? Type: 1 for Yes, 0 for No. \n";
-		cin >> decision;
-		cin.ignore();
-		cout << endl;
-	}
-	*/
-
 	viewList();
-
-	insertIntoSortedList();
-
 	cout << "The size of linked list is " << ::sizeOfLinkedList << "." << endl << endl;
 
-	//while (head != NULL) {
-	//	deleteFromFrontOfList();
-	//}
+	insertIntoSortedList(3, "The Cranberries", "Promises", 1999, "Rock", 4.30);
+	insertIntoSortedList(2, "Taylor Swift", "You Belong with Me", 2008, "Pop", 3.48);
+	insertIntoSortedList(1, "Celine Dion", "Just Walk Away", 1993, "Pop", 4.58);
+	insertIntoSortedList(4, "Maria Carey", "All I Want For Christmas Is You", 1994, "Seasonal", 3.55);
+	insertIntoSortedList(5, "Selena Fomez, Kygo", "It Ain't Me", 2017, "Dance-Pop", 3.41);
+	insertIntoSortedList(6, "Bruno Mars", "Just The Ay You Are", 2010, "Pop", 3.42);
+	insertIntoSortedList(7, "Selena Gomez, BlackPink", "Ice Cream", 2020, "Pop", 2.56);
+	insertIntoSortedList(8, "Britney Spears", "Toxic", 2003, "Dance", 3.19);
 
-	//viewList();
+	viewSortedList();
 
-	//cout << "The size of linked list is " << ::sizeOfLinkedList << "." << endl << endl;
+	while (head != NULL) {
+		deleteFromEnd();
+	}
+
+	viewList();
 
 	return 0;
 }
