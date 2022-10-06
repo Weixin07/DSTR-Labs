@@ -36,7 +36,7 @@ public:
 			exit(1);
 		}
 
-		cout << "Pop Value: " << stack[top] << endl;
+		//cout << "Pop Value: " << stack[top] << endl;
 		stack[top] = '\0'; //NULL in char
 		top--;
 	}
@@ -58,12 +58,12 @@ int main()
 
 			s1.push('(');
 		}
-		else { 
+		else if (equation[i] == ')') {
 			s1.pop(); 
 		}
-	return 0;
 	}
 
+	//check last time in the stack whether the stack is already empty or not?
 	if (s1.isEmpty()) {
 		cout << "The equation is balaned!" << endl;
 	}
