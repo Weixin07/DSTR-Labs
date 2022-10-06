@@ -54,11 +54,69 @@ void displayWholeSongFromFront() {
 }
 
 
-void displayWholeSongFromEnd();
-void displaySingleSongFromStart();
+void displayWholeSongFromEnd() {
+	musicPlayer* current = tail;
+
+	cout << "Artist - Song - Released - Genre - Length" << endl;
+
+	while (current != NULL) {
+		cout << current->artist << " - " << current->song << " - " << current->released_year << " - " << current->genre << " - " << current->length << endl;
+		current = current->previousAddress;
+	}
+
+	cout << "End of List!" << endl << endl;
+}
+
+void displaySingleSongFromStart() {
+	musicPlayer* current = head;
+
+	cout << "Artist - Song - Released - Genre - Length" << endl;
+
+		cout << current->artist << " - " << current->song << " - " << current->released_year << " - " << current->genre << " - " << current->length << endl;
+		current = current->nextAddress;
+
+	cout << "End of List!" << endl << endl;
+}
+
 void displaySingleSongFromEnd();
-void insertNewSongAtFront(string artist, string song, int released_year, string genre, double length);
-void insertNewSongAtEnd(string artist, string song, int released_year, string genre, double length);
+
+void insertNewSongAtFront(string artist, string song, int released_year, string genre, double length) {
+	newNode = new musicPlayer;
+	newNode->artist = artist;
+	newNode->song = song;
+	newNode->released_year = released_year;
+	newNode->genre = genre;
+	newNode->length = length;
+	newNode->nextAddress = NULL;
+
+	if (head == NULL) {
+		head = tail = newNode;
+	}
+	else {
+		newNode->nextAddress = head;
+		head = newNode;
+	}
+}
+
+void insertNewSongAtEnd(string artist, string song, int released_year, string genre, double length) {
+	newNode = new musicPlayer;
+	newNode->artist = artist;
+	newNode->song = song;
+	newNode->released_year = released_year;
+	newNode->genre = genre;
+	newNode->length = length;
+	newNode->nextAddress = NULL;
+
+	if (tail == NULL) {
+		head = tail = newNode;
+	}
+	else {
+		//newNode->nextAddress = tail->previousAddress;
+		newNode->previousAddress = tail;
+		tail->nextAddress = newNode;
+
+	}
+}
 
 int main()
 {
@@ -69,6 +127,7 @@ int main()
 	{"Celine Dion", "Just Walk Away", "1993", "Pop", "4.58"},
 	{"Taylor Swift", "You Belong With Me", "2008", "Pop", "3.48"},
 	{"The Cranberries", "Promises", "1999", "Rock", "4.30"},
+	{"Hello","Hello","2000","Rock","5.4"}
 	};
 	for (int i = 0; i < 4; i++)
 	{
@@ -78,7 +137,27 @@ int main()
 	}
 
 	displayWholeSongFromFront();
+	displayWholeSongFromEnd();
+	insertNewSongAtFront("1", "1", 1, "1", 1);
+	insertNewSongAtEnd("2", "2", 2, "2", 2);
 
+	displayWholeSongFromFront();
+
+	int decision = 1;
+	int loop = 0;
+	while (decision != 0) {
+		loop++;
+
+		for (int l = loop; l < loop + 1; l++) {
+			displaySingleSongFromStart();
+			cout << endl;
+			cout << "Would you like to see the next song in the list? Type 1 for Yes, 0 for No: " << endl;
+			cin >> decision;
+			cin.ignore();
+			cout << endl;
+		}
+	}
+	//displaySingleSongFromStart();
 
 	//int decision = 1;
 	//while (decision != 0)
